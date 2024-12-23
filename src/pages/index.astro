@@ -1,4 +1,5 @@
 ---
+import axios from 'axios'
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HorizontalCard from "../components/HorizontalCard.astro";
 import { getCollection } from "astro:content";
@@ -7,30 +8,69 @@ import createSlug from "../lib/createSlug"
 const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const last_posts = posts.slice(0, 3);
+
+//data from database
+let response = await axios.get('https://logical-mite-inherently.ngrok-free.app/astro/home')
+let mega = response.data.mikeka
 ---
 
 <BaseLayout sideBarActiveItemID="home">
   <div class="pb-12 mt-5">
-    <div class="text-xl py-1">Hey there 👋</div>
-    <div class="text-5xl font-bold">I'm Manuel Ernesto</div>
-    <div class="text-3xl py-3 font-bold">Software Engineer and Entrepreneur</div>
-    <div class="py-2">
-      <text class="text-lg">
-        This is <b>Astrofy</b> a free and open-source template for your Personal Portfolio Website built with Astro and TailwindCSS.
-        Create in minutes a website with Blog, CV, Project Section, Store and RSS Feed. I hope you find
-        it useful!
-      </text>
+    <div class="mb-8">
+      <h1 class="lg:text-5xl text-3xl font-bold mb-2">Mikeka ya Leo</h1>
+      <p>
+        Pata mikeka ya uhakika yenye asilimia kubwa ya ushindi hapa kila siku. Mikeka yetu imeandaliwa kwa umakini na uchambuzi mkubwa ili kukuhakikishia unasimama katika nafasi kubwa ya ushindi.
+      </p>
     </div>
-    <div class="mt-8">
-      <a class="btn" href="https://twitter.com/manuelernestog" target="_blank"> Let's connect!</a>
-      <a href="https://github.com/manuelernestog/astrofy" target="_blank" class="btn btn-outline ml-5">
-        Get This template
+    <hr>
+    <div class="overflow-x-auto mt-5">
+      <h2 class="text-2xl font-bold">Mega Odds za Leo</h2>
+      <table class="table table-zebra table-pin-cols text-xs">
+        <thead>
+          <tr>
+            <th class="text-center">Date</th>
+            <th>Matches</th>
+            <th class="text-center">Tip</th>
+            <th class="text-center">Odds</th>
+          </tr>
+        </thead>
+        <tbody>
+          { mega.map((match, index)=> (
+            <tr>
+              <td class="text-center" style="font-size: 10px !important;">
+                <span class="time">{match.time}</span> <br>
+                <span class="date">{match.date}</span>
+              </td>
+              <td class="hidden align-middle lg:table-cell">{match.match}</td>
+              <td class="table-cell lg:hidden">
+                {match.match.split(' - ')[0]} <br> {match.match.split(' - ')[1]} </td>
+              <td class="text-center">
+                <span class="inline-block bg-secondary p-2 w-11/12 text-base-200 rounded">{match.bet}</span>
+              </td>
+              <td class="text-center">{match.odds}</td>
+            </tr>
+          )) }
+        </tbody>
+        <tfoot>
+          <tr>
+            <th colspan="3" class="text-lg">Betway</th>
+            <th colspan="1" class="text-center text-sm">{response.data.megaOdds}</th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <div class="w-100 mt-4 mx-auto flex justify-around">
+      <a class="btn btn-outline w-2/5" href="https://twitter.com/manuelernestog" target="_blank">
+      150% Bonus
+      </a>
+      <a href="https://github.com/manuelernestog/astrofy" target="_blank" class="btn btn-outline w-2/5">
+        JISAJILI SASA!
       </a>
     </div>
   </div>
-
+<hr>
   <div>
-    <div class="text-3xl w-full font-bold mb-2">My last projects {"</>"}</div>
+    <div class="text-3xl w-full font-bold mb-2 mt-10">My last projects {"</>"}</div>
   </div>
 
   <HorizontalCard
