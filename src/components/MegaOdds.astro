@@ -59,7 +59,7 @@ const FormatTip = (tip :string) => {
                             {match.match.split(" - ")[1]}{" "}
                         </td>
                         <td class="text-center">
-                            <span class="inline-block bg-secondary p-2 w-11/12 text-base-200 rounded">
+                            <span class="inline-block border border-secondary p-2 w-11/12 rounded font-bold">
                                 {FormatTip(match.bet)}
                             </span>
                         </td>
@@ -79,7 +79,7 @@ const FormatTip = (tip :string) => {
     </table>
 </div>
 
-<div class="w-100 mt-4 mx-auto flex justify-around">
+<div class="w-100 mt-4 mx-auto flex lg:justify-around justify-between">
     <a
         class="btn btn-outline w-2/5"
         href="https://twitter.com/manuelernestog"
