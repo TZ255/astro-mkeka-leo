@@ -1,0 +1,36 @@
+<dialog id="my_modal_2" class="modal">
+    <div class="modal-box max-w-[400px]">
+      <form method="dialog">
+        <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+      </form>
+      <h3 class="text-lg font-bold mb-3">TSH. 2,OOO CHAPCHAP! 🔥🔥🔥</h3>
+      <hr>
+      <p class="my-4">
+        Tunatoa Tsh. 2,000 BURE! Ukijisajili Leo na Tsh. 5,000 BURE! Ukidownload App Yetu.
+      </p>
+      <div class="mb-6">
+        <img src="/ads/leonbet.webp" alt="LeonBet Tanzania" onclick="OpenAff('leonbet')" />
+      </div>
+      <hr>
+      <div class="flex justify-end mt-5">
+        <button class="btn ms-4 p-4 bg-secondary text-base-200 rounded hover:bg-primary active:bg-primary" onclick="OpenAff('leonbet')">JISAJILI SASA</button>
+      </div>
+    </div>
+  </dialog>
+
+<script is:inline>
+    const modal = document.getElementById("my_modal_2");
+
+    // Function to show modal
+    function showModal() {
+        modal.showModal();
+    }
+
+    // Initial delay of 10 seconds
+    setTimeout(showModal, 15000);
+
+    // Set up recurring show every 15 seconds after modal is closed
+    modal.addEventListener("close", () => {
+        setTimeout(showModal, 30000);
+    });
+</script>
