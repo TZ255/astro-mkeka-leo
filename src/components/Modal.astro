@@ -23,6 +23,9 @@
 
     // Function to show modal
     function showModal() {
+      if (!modal.isConnected) {
+        document.body.appendChild(modal)
+      }
         modal.showModal();
     }
 

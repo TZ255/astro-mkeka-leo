@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import Over15Tips from '@components/Over15Tips.astro';
+import SomaZaidi from '@components/SomaZaidi.astro';
+---
+
+<BaseLayout sideBarActiveItemID="home">
+  <div class="pb-12 mt-5">
+    <div class="mb-8">
+      <h1 class="lg:text-4xl text-2xl font-bold mb-2">Mkeka wa Magoli Over 1.5</h1>
+      <p>
+        Pata mikeka ya bure ya kila siku kwa betting ya magoli Over 1.5 Fulltime. Mikeka hii imeandaliwa na kuchambuliwa kwa umakini wa hali ya juu ili kukupa nafasi nzuri ya kusimama kwenye upande wa faida katika masuala mazima ya kubeti.
+      </p>
+    </div>
+    <hr>
+    <Over15Tips />
+  </div>
+<hr>
+  <SomaZaidi />
+</BaseLayout>
