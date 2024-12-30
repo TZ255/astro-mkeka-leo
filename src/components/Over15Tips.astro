@@ -1,5 +1,6 @@
 ---
 import axios from "axios";
+import Affiliate from './Affiliate.astro';
 
 //data from database
 const prod_link = `https://mkeka-wa-leo-production-3114.up.railway.app/astro/over15`;
@@ -152,26 +153,9 @@ const FormatTip = (tip: string) => {
             }
         </tbody>
     </table>
-    <div class="text-center mt-3 ofa">
-        Pata Tsh. 5,000 BURE! Ukijisajili na kupakuwa app Yetu!
-    </div>
 </div>
-
-<div class="w-100 mt-4 mb-8 mx-auto flex lg:justify-around justify-between">
-    <button
-        class="btn btn-outline w-2/5"
-        onclick="OpenAff('leonbet')"
-    >
-        150% Bonus
-</button>
-    <button
-        class="btn btn-outline w-2/5"
-        onclick="OpenAff('leonbet')"
-    >
-        JISAJILI SASA!
-</button>
-</div>
-
+<hr>
+<Affiliate />
 <hr>
 
 <div class="final-text p-2 mt-8">

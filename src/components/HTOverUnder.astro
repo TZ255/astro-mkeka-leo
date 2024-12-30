@@ -3,8 +3,8 @@ import axios from "axios";
 import Affiliate from './Affiliate.astro';
 
 //data from database
-const prod_link = `https://mkeka-wa-leo-production-3114.up.railway.app/astro/home`;
-const local_link = `http://localhost:3000/astro/home`;
+const prod_link = `https://mkeka-wa-leo-production-3114.up.railway.app/astro/ht-15`;
+const local_link = `http://localhost:3000/astro/ht-15`;
 let response = await axios.get(prod_link);
 let mikeka = response.data?.mikeka;
 
@@ -23,22 +23,27 @@ const FormatTip = (tip: string) => {
             return tip;
     }
 };
+
+const formatLeague = (data) => {
+    if(data?.length > 28) {
+        return data.substring(0, 29) + '...'
+    } else {
+        return data
+    }
+}
 ---
 
 <div class="overflow-x-auto mt-5">
-    <h2 class="text-2xl font-bold mb-6">Utabiri wa Leo</h2>
+    <h2 class="text-2xl font-bold mb-6">Utabiri wa Leo - Over/Under 1.5 First Half</h2>
     <div class="flex justify-between mb-4">
-        <button class="btn w-2/6 text-lg" id="btn-jana">Jana</button>
-        <button class="btn w-2/6 text-lg border border-secondary" id="btn-leo"
+        <button class="btn w-2/6 text-lg" id="ht15-btn-jana">Jana</button>
+        <button class="btn w-2/6 text-lg border border-secondary" id="ht15-btn-leo"
             >Leo</button
         >
-        <button class="btn w-2/6 text-lg" id="btn-kesho">Kesho</button>
+        <button class="btn w-2/6 text-lg" id="ht15-btn-kesho">Kesho</button>
     </div>
-    <table
-        class="table table-zebra table-pin-cols text-base hidden"
-        id="table-jana"
-    >
-        <thead>
+    <table class="table table-zebra table-pin-cols text-base hidden" id="ht15-table-jana">
+        <thead class="text-[14px]">
             <tr>
                 <th class="text-center">Date</th>
                 <th>Matches</th>
@@ -49,30 +54,26 @@ const FormatTip = (tip: string) => {
             {
                 mikeka.ytips.map((match, index) => (
                     <tr>
-                        <td class="text-center text-xs text-slate-500">
+                        <td
+                            class="text-center text-xs text-slate-500"
+                        >
                             <span class="time">{match.time}</span> <br />
                             <span class="date">
-                                {match.siku.split("/20")[0]}
+                                {match?.date?.split("/20")[0] ?? match?.siku?.split("/20")[0]}
                             </span>
                         </td>
                         <td class="hidden align-middle lg:table-cell">
-                            <span class="text-xs text-slate-500">
-                                {match.league}
-                            </span>{" "}
-                            <br />
+                            <span class="text-xs text-slate-500">{match.league}</span> <br>
                             {match.match}
                         </td>
                         <td class="table-cell lg:hidden">
-                            <span class="text-xs text-slate-500">
-                                {match.league}
-                            </span>{" "}
-                            <br />
+                            <span class="text-xs text-slate-500">{formatLeague(match.league)}</span> <br>
                             {match.match.split(" - ")[0]} <br />
                             {match.match.split(" - ")[1]}
                         </td>
                         <td class="text-center">
-                            <span class="inline-block bg-secondary text-base-200 p-2 w-11/12 rounded font-bold">
-                                {FormatTip(match.tip)}
+                            <span class="inline-block bg-secondary w-[100px] text-base-200 p-2 rounded font-bold">
+                                {FormatTip(match?.tip ?? match?.bet)}
                             </span>
                         </td>
                     </tr>
@@ -81,8 +82,8 @@ const FormatTip = (tip: string) => {
         </tbody>
     </table>
 
-    <table class="table table-zebra table-pin-cols text-base" id="table-leo">
-        <thead>
+    <table class="table table-zebra table-pin-cols text-base" id="ht15-table-leo">
+        <thead class="text-[14px]">
             <tr>
                 <th class="text-center">Date</th>
                 <th>Matches</th>
@@ -93,30 +94,26 @@ const FormatTip = (tip: string) => {
             {
                 mikeka.ftips.map((match, index) => (
                     <tr>
-                        <td class="text-center text-xs text-slate-500">
+                        <td
+                            class="text-center text-xs text-slate-500"
+                        >
                             <span class="time">{match.time}</span> <br />
                             <span class="date">
-                                {match.siku.split("/20")[0]}
+                                {match?.date?.split("/20")[0] ?? match?.siku?.split("/20")[0]}
                             </span>
                         </td>
                         <td class="hidden align-middle lg:table-cell">
-                            <span class="text-xs text-slate-500">
-                                {match.league}
-                            </span>{" "}
-                            <br />
+                            <span class="text-xs text-slate-500">{match.league}</span> <br>
                             {match.match}
                         </td>
                         <td class="table-cell lg:hidden">
-                            <span class="text-xs text-slate-500">
-                                {match.league}
-                            </span>{" "}
-                            <br />
+                            <span class="text-xs text-slate-500">{formatLeague(match.league)}</span> <br>
                             {match.match.split(" - ")[0]} <br />{" "}
                             {match.match.split(" - ")[1]}{" "}
                         </td>
                         <td class="text-center">
-                            <span class="inline-block bg-secondary text-sm text-base-200 p-2 w-11/12 rounded font-bold">
-                                {FormatTip(match.tip)}
+                            <span class="inline-block bg-secondary w-[100px] text-sm text-base-200 p-2 rounded font-bold">
+                                {FormatTip(match?.tip ?? match?.bet)}
                             </span>
                         </td>
                     </tr>
@@ -125,79 +122,76 @@ const FormatTip = (tip: string) => {
         </tbody>
     </table>
 
-    <table
-        class="table table-zebra table-pin-cols text-base hidden"
-        id="table-kesho"
-    >
+    <table class="table table-zebra table-pin-cols text-base hidden" id="ht15-table-kesho">
         <thead class="text-[14px]">
             <tr>
                 <th class="text-center">Date</th>
                 <th>Matches</th>
                 <th class="text-center">Tip</th>
-                <th class="text-center">Odds</th>
             </tr>
         </thead>
         <tbody>
             {
                 mikeka.ktips.map((match, index) => (
                     <tr>
-                        <td class="text-center text-xs text-slate-500">
+                        <td
+                            class="text-center text-xs text-slate-500"
+                        >
                             <span class="time">{match.time}</span> <br />
                             <span class="date">
-                                {match.siku.split("/20")[0]}
+                                {match?.date?.split("/20")[0] ?? match?.siku?.split("/20")[0]}
                             </span>
                         </td>
                         <td class="hidden align-middle lg:table-cell">
-                            <span class="text-xs text-slate-500">
-                                {match.league}
-                            </span>{" "}
-                            <br />
+                            <span class="text-xs text-slate-500">{match.league}</span> <br>
                             {match.match}
                         </td>
                         <td class="table-cell lg:hidden">
-                            <span class="text-xs text-slate-500">
-                                {match.league}
-                            </span>{" "}
-                            <br />
+                            <span class="text-xs text-slate-500">{formatLeague(match.league)}</span> <br>
                             {match.match.split(" - ")[0]} <br />{" "}
                             {match.match.split(" - ")[1]}{" "}
                         </td>
                         <td class="text-center">
-                            <span class="inline-block bg-secondary text-base-200 p-2 w-11/12 rounded font-bold">
-                                {FormatTip(match.tip)}
+                            <span class="inline-block bg-secondary w-[100px] text-base-200 p-2 rounded font-bold">
+                                {FormatTip(match?.tip ?? match?.bet)}
                             </span>
                         </td>
-                        <td class="text-center">{match.odd}</td>
                     </tr>
                 ))
             }
         </tbody>
     </table>
 </div>
-
+<hr>
 <Affiliate />
+<hr>
+
+<div class="final-text p-2 mt-8">
+    <h2 class="text-2xl font-bold mb-2">Over 1.5 HT ni Nini?</h2>
+    <p>
+        Over 1.5 Halftime (HT), hapa tunatabiri idadi ya jumla ya mabao yatakayofungwa kipindi cha kwanza. Kwa chaguo la Over 1.5 tunabashiri kwamba idadi ya mabao yote kipindi cha kwanza yatakuwa mawili au zaidi. Mfano wa matokeo ya ushindi ni <b>1:1, 2:0, 2:1, n.k</b>
+    </p>
+    <br> <br>
+    <h2 class="text-2xl font-bold mb-2">Under 1.5 HT ni Nini?</h2>
+    <p>
+        Under 1.5 Halftime (HT), hapa tunatabiri idadi ya jumla ya mabao yatakayofungwa kipindi cha kwanza. Kwa chaguo la Under 1.5 tunabashiri kwamba idadi ya mabao yote kipindi cha kwanza yasizidi bao moja. Mfano wa matokeo ya ushindi ni <b>0:0</b> au <b>1:0</b>
+    </p>
+</div>
 
 <script is:inline>
-    //document.getElementById("table-leo").style.display = "table";
-    //document.getElementById("table-jana").style.display = "none";
-    //document.getElementById("table-kesho").style.display = "none";
 
     // Add click handlers
     ["jana", "leo", "kesho"].forEach((day) => {
-        document.getElementById(`btn-${day}`).addEventListener("click", () => {
+        document.getElementById(`ht15-btn-${day}`).addEventListener("click", () => {
             // Hide all tables
             ["jana", "leo", "kesho"].forEach((d) => {
-                document.getElementById(`table-${d}`).classList.add("hidden");
-                document
-                    .getElementById(`btn-${d}`)
-                    .classList.remove("border", "border-secondary");
+                document.getElementById(`ht15-table-${d}`).classList.add('hidden')
+                document.getElementById(`ht15-btn-${d}`).classList.remove("border", "border-secondary");
             });
 
             // Show selected table and highlight button
-            document.getElementById(`table-${day}`).classList.remove("hidden");
-            document
-                .getElementById(`btn-${day}`)
-                .classList.add("border", "border-secondary");
+            document.getElementById(`ht15-table-${day}`).classList.remove('hidden');
+            document.getElementById(`ht15-btn-${day}`).classList.add("border", "border-secondary");
         });
     });
 </script>

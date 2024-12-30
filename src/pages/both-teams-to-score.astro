@@ -9,9 +9,12 @@ import SomaZaidi from '@components/SomaZaidi.astro';
 const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const last_posts = posts.slice(0, 3);
+
+const title = "Mikeka ya Uhakika ya Both Teams to Score"
+const desc = "Pata mikeka ya uhakika ya Both Teams to Socore (GG / NG) hapa kila siku. Mikeka ya bure leo, kesho, Jumamosi na Jumapili"
 ---
 
-<BaseLayout sideBarActiveItemID="home">
+<BaseLayout sideBarActiveItemID="btts" title={title} description={desc}>
   <div class="pb-12 mt-5">
     <div class="mb-8">
       <h1 class="lg:text-4xl text-2xl font-bold mb-2">Mkeka wa Both Teams to Score</h1>

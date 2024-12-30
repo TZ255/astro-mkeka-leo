@@ -3,9 +3,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import Over15Tips from '@components/Over15Tips.astro';
 import SomaZaidi from '@components/SomaZaidi.astro';
+
+const title = "Mikeka ya Over 1.5 ya Uhakika Leo"
+const desc = "Utabiri wa mpira wa miguu Over 1.5 - Pata mechi zenye nafasi kubwa za kufunga mabao zaidi ya moja. Uhakika wa ushindi na utabiri sahihi kila siku!"
 ---
 
-<BaseLayout sideBarActiveItemID="home">
+<BaseLayout sideBarActiveItemID="over15" title={title} description={desc}>
   <div class="pb-12 mt-5">
     <div class="mb-8">
       <h1 class="lg:text-4xl text-2xl font-bold mb-2">Mkeka wa Magoli Over 1.5</h1>
