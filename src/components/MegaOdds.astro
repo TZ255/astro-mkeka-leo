@@ -8,6 +8,11 @@ const local_link = `http://localhost:3000/astro/home`;
 let response = await axios.get(prod_link);
 let mikeka = response.data?.mikeka;
 
+//check data length
+const janaLengthIsGreater = mikeka?.ytips && mikeka.ytips.length > 0
+const leoLengthIsGreater = mikeka?.ftips && mikeka.ftips.length > 0
+const keshoLengthIsGreater = mikeka?.ktips && mikeka.ktips.length > 0
+
 const FormatTip = (tip: string) => {
     switch (tip) {
         case "Home Win":
@@ -34,10 +39,9 @@ const FormatTip = (tip: string) => {
         >
         <button class="btn w-2/6 text-lg" id="btn-kesho">Kesho</button>
     </div>
-    <table
-        class="table table-zebra table-pin-cols text-base hidden"
-        id="table-jana"
-    >
+    
+    <div id="table-jana" class="hidden">
+        <table class="table table-zebra table-pin-cols text-base">
         <thead>
             <tr>
                 <th class="text-center">Date</th>
@@ -80,61 +84,67 @@ const FormatTip = (tip: string) => {
             }
         </tbody>
     </table>
+    <div class={janaLengthIsGreater ? 'hidden' : 'hidestyle'}>
+        <p>Kwa siku ya jana hatukuwa na mkeka</p>
+    </div>
+    </div>
 
-    <table class="table table-zebra table-pin-cols text-base" id="table-leo">
-        <thead>
-            <tr>
-                <th class="text-center">Date</th>
-                <th>Matches</th>
-                <th class="text-center">Tip</th>
-            </tr>
-        </thead>
-        <tbody>
-            {
-                mikeka.ftips.map((match, index) => (
-                    <tr>
-                        <td class="text-center text-xs text-slate-500">
-                            <span class="time">{match.time}</span> <br />
-                            <span class="date">
-                                {match.siku.split("/20")[0]}
-                            </span>
-                        </td>
-                        <td class="hidden align-middle lg:table-cell">
-                            <span class="text-xs text-slate-500">
-                                {match.league}
-                            </span>{" "}
-                            <br />
-                            {match.match}
-                        </td>
-                        <td class="table-cell lg:hidden">
-                            <span class="text-xs text-slate-500">
-                                {match.league}
-                            </span>{" "}
-                            <br />
-                            {match.match.split(" - ")[0]} <br />{" "}
-                            {match.match.split(" - ")[1]}{" "}
-                        </td>
-                        <td class="text-center">
-                            <span class="inline-block bg-secondary text-sm text-base-200 p-2 w-11/12 rounded font-bold">
-                                {FormatTip(match.tip)}
-                            </span>
-                        </td>
-                    </tr>
-                ))
-            }
-        </tbody>
-    </table>
+    <div id="table-leo">
+        <table class="table table-zebra table-pin-cols text-base">
+            <thead>
+                <tr>
+                    <th class="text-center">Date</th>
+                    <th>Matches</th>
+                    <th class="text-center">Tip</th>
+                </tr>
+            </thead>
+            <tbody>
+                {
+                    mikeka.ftips.map((match, index) => (
+                        <tr>
+                            <td class="text-center text-xs text-slate-500">
+                                <span class="time">{match.time}</span> <br />
+                                <span class="date">
+                                    {match.siku.split("/20")[0]}
+                                </span>
+                            </td>
+                            <td class="hidden align-middle lg:table-cell">
+                                <span class="text-xs text-slate-500">
+                                    {match.league}
+                                </span>{" "}
+                                <br />
+                                {match.match}
+                            </td>
+                            <td class="table-cell lg:hidden">
+                                <span class="text-xs text-slate-500">
+                                    {match.league}
+                                </span>{" "}
+                                <br />
+                                {match.match.split(" - ")[0]} <br />{" "}
+                                {match.match.split(" - ")[1]}{" "}
+                            </td>
+                            <td class="text-center">
+                                <span class="inline-block bg-secondary text-sm text-base-200 p-2 w-11/12 rounded font-bold">
+                                    {FormatTip(match.tip)}
+                                </span>
+                            </td>
+                        </tr>
+                    ))
+                }
+            </tbody>
+        </table>
+        <div class={leoLengthIsGreater ? 'hidden' : 'hidestyle'}>
+            <p>Mikeka ya leo bado ipo kwenye maandalizi. Rudi baada ya mda kidogo itakuwa tayari au shuka chini kuona mikeka mingine</p>
+        </div>
+    </div>
 
-    <table
-        class="table table-zebra table-pin-cols text-base hidden"
-        id="table-kesho"
-    >
+    <div id="table-kesho" class="hidden">
+        <table class="table table-zebra table-pin-cols text-base">
         <thead class="text-[14px]">
             <tr>
                 <th class="text-center">Date</th>
                 <th>Matches</th>
                 <th class="text-center">Tip</th>
-                <th class="text-center">Odds</th>
             </tr>
         </thead>
         <tbody>
@@ -167,15 +177,29 @@ const FormatTip = (tip: string) => {
                                 {FormatTip(match.tip)}
                             </span>
                         </td>
-                        <td class="text-center">{match.odd}</td>
                     </tr>
                 ))
             }
         </tbody>
     </table>
+    <div class={keshoLengthIsGreater ? 'hidden' : 'hidestyle'}>
+        <p>Mikeka ya Kesho bado ipo kwenye maandalizi. Rudi baada ya mda kidogo itakuwa tayari au shuka chini kuona mikeka mingine</p>
+    </div>
+    </div>
 </div>
 
 <Affiliate />
+
+
+<style>
+    .hidestyle {
+        font-size: 13px;
+        font-weight: bold;
+        padding: 4px;
+        color: brown;
+        margin-top: 16px;
+    }
+</style>
 
 <script is:inline>
     //document.getElementById("table-leo").style.display = "table";
