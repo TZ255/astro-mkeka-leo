@@ -1,8 +1,8 @@
 ---
 title: "Kampuni Nzuri za Betting Tanzania 2025"
 description: "Angalia hapa orodha ya kampuni bora za betting Tanzania kwa mwaka 2025. Hizi ni kampuni bora za kubashiri zenye ofa za bure, machaguo mengi na bonus za mikeka"
-pubDate: "Jan 1 2024"
-modDate: "Jan 1 2024"
+pubDate: "Jan 1 2025"
+modDate: "Jan 1 2025"
 heroImage: "/blog/kampuni-bora.webp"
 slug: "kampuni-nzuri-za-betting-tanzania"
 tags: ["bettingsites", "ofa2025"]
