@@ -32,14 +32,15 @@ const FormatTip = (tip: string) => {
 
 <div class="overflow-x-auto mt-5" id="odds-za-leo">
     <h2 class="text-2xl font-bold mb-6">Utabiri wa Leo</h2>
-    <div class="flex justify-between mb-4 ">
+    <div class="flex justify-between mb-4">
         <button class="btn w-2/6 text-[14px]" id="btn-jana">Jana</button>
-        <button class="btn w-2/6 text-[14px] border border-secondary" id="btn-leo"
-            >Leo</button
+        <button
+            class="btn w-2/6 text-[14px] border border-secondary"
+            id="btn-leo">Leo</button
         >
         <button class="btn w-2/6 text-[14px]" id="btn-kesho">Kesho</button>
     </div>
-    <hr><br>
+    <hr /><br />
 
     <div id="table-jana" class="hidden">
         <table class="table table-zebra table-xs table-pin-cols text-base">
@@ -66,15 +67,17 @@ const FormatTip = (tip: string) => {
                                     {match.league}
                                 </span>{" "}
                                 <br />
-                                {match.match}
+                                <span class="text-sm">{match.match}</span>
                             </td>
                             <td class="table-cell lg:hidden">
                                 <span class="text-slate-500">
                                     {match.league}
                                 </span>{" "}
                                 <br />
-                                {match.match.split(" - ")[0]} <br />
-                                {match.match.split(" - ")[1]}
+                                <span class="text-sm">
+                                    {match.match.split(" - ")[0]} <br />
+                                    {match.match.split(" - ")[1]}
+                                </span>
                             </td>
                             <td class="text-center">
                                 <span class="inline-block bg-secondary text-base-200 p-2 w-11/12 rounded font-bold">
@@ -117,15 +120,17 @@ const FormatTip = (tip: string) => {
                                     {match.league}
                                 </span>{" "}
                                 <br />
-                                {match.match}
+                                <span class="text-sm">{match.match}</span>
                             </td>
                             <td class="table-cell lg:hidden">
                                 <span class="text-slate-500">
                                     {match.league}
                                 </span>{" "}
                                 <br />
-                                {match.match.split(" - ")[0]} <br />{" "}
-                                {match.match.split(" - ")[1]}{" "}
+                                <span class="text-sm">
+                                    {match.match.split(" - ")[0]} <br />{" "}
+                                    {match.match.split(" - ")[1]}{" "}
+                                </span>
                             </td>
                             <td class="text-center">
                                 <span class="inline-block bg-secondary text-base-200 p-2 w-11/12 rounded font-bold">
@@ -171,15 +176,17 @@ const FormatTip = (tip: string) => {
                                     {match.league}
                                 </span>{" "}
                                 <br />
-                                {match.match}
+                                <span class="text-sm">{match.match}</span>
                             </td>
                             <td class="table-cell lg:hidden">
                                 <span class="text-slate-500">
                                     {match.league}
                                 </span>{" "}
                                 <br />
-                                {match.match.split(" - ")[0]} <br />{" "}
-                                {match.match.split(" - ")[1]}{" "}
+                                <span class="text-sm">
+                                    {match.match.split(" - ")[0]} <br />{" "}
+                                    {match.match.split(" - ")[1]}{" "}
+                                </span>
                             </td>
                             <td class="text-center">
                                 <span class="inline-block bg-secondary text-base-200 p-2 w-11/12 rounded font-bold">
