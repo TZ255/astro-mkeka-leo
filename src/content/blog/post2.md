@@ -20,7 +20,7 @@ Michuano ya **Kombe la Mataifa ya Afrika (AFCON) 2025** inatarajiwa kufanyika nc
 
 Zoezi hili la *Afcon 2025 draw* limefanyika jijini Rabat, Morocco, mnamo Jumatatu (27 Januari). Miongoni mwa timu zinazoshiriki ni mabingwa watetezi Ivory Coast (Cote D’Ivoire), washindi wa kihistoria Misri (wanaoshikilia rekodi ya kutwaa taji hilo mara nyingi), pamoja na wenyeji Morocco. Nchi zote zinazoshiriki zilipitia hatua za mchujo (qualifiers) ambapo kati ya mataifa 52 wanachama wa Shirikisho la Soka Afrika (CAF), 48 yalifanikiwa kufuzu na kuunda makundi 12 ya timu nne kila kundi.
 
-Katika makundi hayo 12, kila timu ilicheza mechi sita (nyumbani na ugenini), na mbili bora kutoka kila kundi zikajikatia tiketi ya **AFCON 2025**. Hatua hii inatarajiwa kuleta ushindani mkubwa, hasa ikizingatiwa kuwa ni michuano ya 35 ya Kombe la Mataifa ya Afrika. Ifuatayo ni muhtasari kamili wa **Makundi ya AFCON 2025**, ratiba, na muundo wa mashindano hadi fainali:
+Katika makundi hayo 12, kila timu ilicheza mechi sita (nyumbani na ugenini), na timu mbili bora kutoka kila kundi zikajikatia tiketi ya **AFCON 2025**. Hatua hii inatarajiwa kuleta ushindani mkubwa, hasa ikizingatiwa kuwa ni michuano ya 35 ya Kombe la Mataifa ya Afrika. Ifuatayo ni muhtasari kamili wa **Makundi ya AFCON 2025**, ratiba, na muundo wa mashindano hadi fainali:
 
 ---
 
