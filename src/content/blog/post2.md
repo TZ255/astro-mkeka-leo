@@ -5,7 +5,7 @@ pubDate: "Jan 28 2025"
 modDate: "Jan 28 2025"
 heroImage: "/blog/afcon2025.webp"
 slug: "makundi-ya-afcon-2025-morocco"
-tags: ["Afcon2025"]
+tags: ["Afcon2025", "CAF"]
 badge: "AFCON"
 ---
 
