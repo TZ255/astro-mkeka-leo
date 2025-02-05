@@ -5,7 +5,7 @@ import HorizontalCard from './HorizontalCard.astro'
 
 const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-const last_posts = posts.slice(0, 10);
+const last_posts = posts.slice(0, 3);
 ---
 
 
@@ -62,4 +62,8 @@ const last_posts = posts.slice(0, 10);
       </>
     ))
   }
+  <div style="text-align: center; margin-top: 16px;">
+    <a href="/blog/" class="btn w-[90%] max-w-[480px] text-[14px] bg-secondary text-base-200 hover:bg-secondary">MAKALA ZAIDI</a>
+  </div>
  </section>
+ <div class="divider my-3" />
