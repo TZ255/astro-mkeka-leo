@@ -2,13 +2,13 @@
 import axios from "axios";
 import Affiliate from "./Affiliate.astro";
 
-//data from database
+// Data from database
 const prod_link = `https://mkeka-wa-leo-production-3114.up.railway.app/astro/btts`;
 const local_link = `http://localhost:3000/astro/btts`;
 let response = await axios.get(prod_link);
 let mikeka = response.data?.mikeka;
 
-//check data length
+// Check data length
 const janaLengthIsGreater = mikeka?.ytips && mikeka.ytips.length > 0;
 const leoLengthIsGreater = mikeka?.ftips && mikeka.ftips.length > 0;
 const keshoLengthIsGreater = mikeka?.ktips && mikeka.ktips.length > 0;
@@ -17,13 +17,12 @@ const FormatTip = (tip: string) => {
     switch (tip) {
         case "Home Win":
             return "1";
-
         case "Away Win":
             return "2";
-
         case "Draw":
             return "X";
-
+        case "YES":
+            return "GG";
         default:
             return tip;
     }
@@ -38,7 +37,7 @@ const formatLeague = (data) => {
 };
 ---
 
-<div class="overflow-x-auto mt-5">
+<div class="mt-5">
     <h2 class="text-2xl font-bold mb-6">
         Utabiri wa Leo - Both Teams to Score
     </h2>
@@ -52,99 +51,83 @@ const formatLeague = (data) => {
     </div>
     <hr><br>
 
+    <!-- Jana Cards -->
     <div id="btts-table-jana" class="hidden">
-        <table class="table table-zebra table-pin-cols text-base">
-            <thead class="text-[14px]">
-                <tr>
-                    <th class="text-center">Date</th>
-                    <th>Matches</th>
-                    <th class="text-center">Tip</th>
-                </tr>
-            </thead>
-            <tbody>
-                {
-                    mikeka.ytips.map((match, index) => (
-                        <tr>
-                            <td class="text-center text-xs text-slate-500">
-                                <span class="time">{match.time}</span> <br />
-                                <span class="date">
-                                    {match.date.split("/20")[0]}
-                                </span>
-                            </td>
-                            <td class="hidden align-middle lg:table-cell">
-                                <span class="text-xs text-slate-500">
-                                    {match.league}
-                                </span>{" "}
-                                <br />
-                                {match.match}
-                            </td>
-                            <td class="table-cell lg:hidden">
-                                <span class="text-xs text-slate-500">
-                                    {formatLeague(match.league)}
-                                </span>{" "}
-                                <br />
-                                {match.match.split(" - ")[0]} <br />
-                                {match.match.split(" - ")[1]}
-                            </td>
-                            <td class="text-center">
-                                <span class="inline-block bg-secondary text-base-200 p-2 w-fit rounded font-bold">
+        <div class="space-y-4 max-w-xl mx-auto">
+            {
+                mikeka.ytips.map((match, index) => (
+                    <div class="card bg-base-100 shadow-xl border border-gray-200">
+                        <div class="card-body p-4">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-xs text-slate-500">{formatLeague(match.league)}</span>
+                                </div>
+                                <div class="flex items-center flex-col">
+                                    <span class="text-xs text-slate-500">{match.time}</span>
+                                    <span class="text-xs text-slate-500">{match.date}</span>
+                                </div>
+                            </div>
+                            
+                            <div class="divider my-2"></div>
+                            
+                            <div class="text-center my-3">
+                                <h2 class="text-lg font-bold">{match.match}</h2>
+                            </div>
+                            
+                            <div class="flex justify-center flex-col">
+                                <div class="bg-gray-800 text-white p-3 w-[250px] rounded-full font-bold text-center mx-auto">
                                     {FormatTip(match.bet)}
-                                </span>
-                            </td>
-                        </tr>
-                    ))
-                }
-            </tbody>
-        </table>
+                                </div>
+                                <div class="text-center text-[10px] mt-3">
+                                    {match.expl}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
         <div class={janaLengthIsGreater ? "hidden" : "hidestyle"}>
             <p>Kwa siku ya jana hatukuwa na mkeka</p>
         </div>
     </div>
 
+    <!-- Leo Cards -->
     <div id="btts-table-leo">
-        <table class="table table-zebra table-pin-cols text-base">
-            <thead class="text-[14px]">
-                <tr>
-                    <th class="text-center">Date</th>
-                    <th>Matches</th>
-                    <th class="text-center">Tip</th>
-                </tr>
-            </thead>
-            <tbody>
-                {
-                    mikeka.ftips.map((match, index) => (
-                        <tr>
-                            <td class="text-center text-xs text-slate-500">
-                                <span class="time">{match.time}</span> <br />
-                                <span class="date">
-                                    {match.date.split("/20")[0]}
-                                </span>
-                            </td>
-                            <td class="hidden align-middle lg:table-cell">
-                                <span class="text-xs text-slate-500">
-                                    {match.league}
-                                </span>{" "}
-                                <br />
-                                {match.match}
-                            </td>
-                            <td class="table-cell lg:hidden">
-                                <span class="text-xs text-slate-500">
-                                    {formatLeague(match.league)}
-                                </span>{" "}
-                                <br />
-                                {match.match.split(" - ")[0]} <br />{" "}
-                                {match.match.split(" - ")[1]}{" "}
-                            </td>
-                            <td class="text-center">
-                                <span class="inline-block bg-secondary text-sm text-base-200 p-2 w-fit rounded font-bold">
+        <div class="space-y-4 max-w-xl mx-auto">
+            {
+                mikeka.ftips.map((match, index) => (
+                    <div class="card bg-base-100 shadow-xl border border-gray-200">
+                        <div class="card-body p-4">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-xs text-slate-500">{formatLeague(match.league)}</span>
+                                </div>
+                                <div class="flex items-center flex-col">
+                                    <span class="text-xs text-slate-500">{match.time}</span>
+                                    <span class="text-xs text-slate-500">{match.date}</span>
+                                </div>
+                            </div>
+                            
+                            <div class="divider my-2"></div>
+                            
+                            <div class="text-center my-3">
+                                <h2 class="text-lg font-bold">{match.match}</h2>
+                            </div>
+                            
+                            <div class="flex justify-center flex-col">
+                                <div class="bg-gray-800 text-white p-3 w-[250px] rounded-full font-bold text-center mx-auto">
                                     {FormatTip(match.bet)}
-                                </span>
-                            </td>
-                        </tr>
-                    ))
-                }
-            </tbody>
-        </table>
+                                </div>
+                                <div class="text-center text-[10px] mt-3">
+                                    {match.expl}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
         <div class={leoLengthIsGreater ? "hidden" : "hidestyle"}>
             <p>
                 Mikeka ya leo bado ipo kwenye maandalizi. Rudi baada ya mda
@@ -153,50 +136,43 @@ const formatLeague = (data) => {
         </div>
     </div>
 
+    <!-- Kesho Cards -->
     <div id="btts-table-kesho" class="hidden">
-        <table class="table table-zebra table-pin-cols text-base">
-            <thead class="text-[14px]">
-                <tr>
-                    <th class="text-center">Date</th>
-                    <th>Matches</th>
-                    <th class="text-center">Tip</th>
-                </tr>
-            </thead>
-            <tbody>
-                {
-                    mikeka.ktips.map((match, index) => (
-                        <tr>
-                            <td class="text-center text-xs text-slate-500">
-                                <span class="time">{match.time}</span> <br />
-                                <span class="date">
-                                    {match.date.split("/20")[0]}
-                                </span>
-                            </td>
-                            <td class="hidden align-middle lg:table-cell">
-                                <span class="text-xs text-slate-500">
-                                    {match.league}
-                                </span>{" "}
-                                <br />
-                                {match.match}
-                            </td>
-                            <td class="table-cell lg:hidden">
-                                <span class="text-xs text-slate-500">
-                                    {formatLeague(match.league)}
-                                </span>{" "}
-                                <br />
-                                {match.match.split(" - ")[0]} <br />{" "}
-                                {match.match.split(" - ")[1]}{" "}
-                            </td>
-                            <td class="text-center">
-                                <span class="inline-block bg-secondary text-base-200 p-2 w-fit rounded font-bold">
+        <div class="space-y-4 max-w-xl mx-auto">
+            {
+                mikeka.ktips.map((match, index) => (
+                    <div class="card bg-base-100 shadow-xl border border-gray-200">
+                        <div class="card-body p-4">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-xs text-slate-500">{formatLeague(match.league)}</span>
+                                </div>
+                                <div class="flex items-center flex-col">
+                                    <span class="text-xs text-slate-500">{match.time}</span>
+                                    <span class="text-xs text-slate-500">{match.date}</span>
+                                </div>
+                            </div>
+                            
+                            <div class="divider my-2"></div>
+                            
+                            <div class="text-center my-3">
+                                <h2 class="text-lg font-bold">{match.match}</h2>
+                            </div>
+                            
+                            <div class="flex justify-center flex-col">
+                                <div class="bg-gray-800 text-white p-3 w-[250px] rounded-full font-bold text-center mx-auto">
                                     {FormatTip(match.bet)}
-                                </span>
-                            </td>
-                        </tr>
-                    ))
-                }
-            </tbody>
-        </table>
+                                </div>
+                                <div class="text-center text-[10px] mt-3">
+                                    {match.expl}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
+                ))
+            }
+        </div>
         <div class={keshoLengthIsGreater ? "hidden" : "hidestyle"}>
             <p>
                 Mikeka ya kesho bado ipo kwenye maandalizi. Rudi baada ya mda
@@ -209,20 +185,48 @@ const formatLeague = (data) => {
 <Affiliate />
 <hr />
 
-<div class="final-text p-2 mt-8">
-    <h2 class="text-xl font-bold mb-2">BTTS au GG/NG ni Nini?</h2>
-    <p>Hapa tunatabiri iwapo timu zote zitafungana au vinginevyo</p>
-    <ul>
-        <li>
-            <b>GG au YES</b> ina maananisha timu zote kufungana. Mfano wa matokeo
-            sahihi ya chaguo hili ni: 1:1, 2:1, 1:2, 3:1, 3:2, 2:2, n.k.
-        </li>
-        <br />
-        <li>
-            <b>NG au NO</b> inamaanisha timu moja au zote zisifungane. Mfano wa matokeo
-            sahihi ya chaguo hili ni: 0:0, 0:1, 1:0, 2:0, 3:0, 0:2, 0:3, n.k
-        </li>
-    </ul>
+<div class="p-2 mt-8 max-w-xl mx-auto">
+  <h2 class="text-xl font-bold mb-4">BTTS au GG/NG ni Nini?</h2>
+  <p class="mb-4">Hapa tunatabiri iwapo timu zote zitafungana au vinginevyo</p>
+  
+  <div class="space-y-4">
+    <!-- GG/YES Card -->
+    <div class="card bg-base-100 shadow-xl border border-gray-200">
+      <div class="card-body">
+        <h3 class="card-title">GG au YES</h3>
+        <p>Ina maananisha timu zote kufungana.</p>
+        <div class="divider my-2">Mfano wa Matokeo</div>
+        <div class="flex flex-wrap gap-2">
+          <div class="badge">1:1</div>
+          <div class="badge">2:1</div>
+          <div class="badge">1:2</div>
+          <div class="badge">3:1</div>
+          <div class="badge">3:2</div>
+          <div class="badge">2:2</div>
+          <div class="badge">n.k.</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- NG/NO Card -->
+    <div class="card bg-base-100 shadow-xl border border-gray-200">
+      <div class="card-body">
+        <h3 class="card-title">NG au NO</h3>
+        <p>Inamaanisha timu moja au zote zisifungane.</p>
+        <div class="divider my-2">Mfano wa Matokeo</div>
+        <div class="flex flex-wrap gap-2">
+          <div class="badge">0:0</div>
+          <div class="badge">0:1</div>
+          <div class="badge">1:0</div>
+          <div class="badge">2:0</div>
+          <div class="badge">3:0</div>
+          <div class="badge">0:2</div>
+          <div class="badge">0:3</div>
+          <div class="badge">n.k.</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 
