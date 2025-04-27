@@ -1,22 +1,52 @@
 <dialog id="my_modal_2" class="modal">
-    <div class="modal-box max-w-[400px]">
-      <form method="dialog">
-        <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-      </form>
-      <h3 class="text-lg font-bold mb-3">TSH. 2,OOO CHAPCHAP! 🔥🔥🔥</h3>
-      <hr>
-      <p class="my-4">
-        Tunatoa Tsh. 2,000 BURE! Ukijisajili Leo na Tsh. 5,000 BURE! Ukidownload App Yetu.
+  <div class="modal-box max-w-sm bg-purple-50 p-0 rounded-lg overflow-hidden shadow-lg">
+    <form method="dialog">
+      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-purple-800 text-lg bg-purple-200 z-10">✕</button>
+    </form>
+    
+    <!-- Header with gradient background -->
+    <div class="bg-gradient-to-r from-purple-700 to-purple-900 p-4 text-white">
+      <h3 class="text-xl font-bold flex items-center">
+        <span class="mr-2">KASINO KIGANJANI</span>
+        <span class="flex">🔥🔥🔥</span>
+      </h3>
+    </div>
+    
+    <!-- Content area -->
+    <div class="p-4">
+      <p class="my-4 text-gray-700">
+        Cheza michezo mingi ya kasino kama vile 
+        <span class="badge bg-purple-600 text-white font-medium mb-1">Blackjack</span>
+        <span class="badge bg-purple-600 text-white font-medium mb-1">Roulette</span>
+        <span class="badge bg-purple-600 text-white font-medium mb-1">Aviator</span>
+        <span class="badge bg-purple-600 text-white font-medium mb-1">Slots</span>
+        kwenye Jackpot City Tanzania.
       </p>
-      <div class="mb-6">
-        <img src="/ads/leonbet.webp" alt="LeonBet Tanzania" onclick="OpenAff('leonbet')" />
+      
+      <div class="bg-purple-100 p-3 rounded-lg mb-4">
+        <p class="text-purple-800 font-bold text-center">Jisajili sasa na upate bonasi ya 100% hadi</p>
+        <p class="text-2xl font-bold text-center text-purple-900">Tsh. 1,500,000!</p>
       </div>
-      <hr>
-      <div class="flex justify-end mt-5">
-        <button class="btn ms-4 p-4 bg-secondary text-base-200 rounded hover:bg-primary active:bg-primary" onclick="OpenAff('leonbet')">JISAJILI SASA</button>
+      
+      <!-- Banner with clear CTA overlay -->
+      <div class="relative mb-6 rounded-lg shadow hover:shadow-xl transition-all duration-300" onclick="OpenAff('jpcity')">
+        <img src="/ads/jpc-banner.webp" alt="Jackpot City Tanzania" class="w-full" />
+        <div class="absolute inset-0 flex items-center justify-center">
+          <button class="btn bg-purple-800 hover:bg-purple-900 text-white px-6 py-3 rounded-full font-bold shadow-lg">JIUNGE SASA</button>
+        </div>
       </div>
     </div>
-  </dialog>
+    
+    <!-- Footer with CTA button -->
+    <div class="bg-purple-100 p-4 flex justify-between items-center">
+      <div class="text-purple-800">
+        <div class="font-bold">Tayari kushinda?</div>
+        <div class="text-xs">Tsh. 5,000 tu kuanza</div>
+      </div>
+      <button class="btn bg-purple-800 hover:bg-purple-900 text-white px-6 py-2 rounded-full font-bold" onclick="OpenAff('jpcity')">JISAJILI SASA</button>
+    </div>
+  </div>
+</dialog>
 
 <script is:inline>
     const modal = document.getElementById("my_modal_2");
@@ -34,6 +64,6 @@
 
     // Set up recurring show every 15 seconds after modal is closed
     modal.addEventListener("close", () => {
-        setTimeout(showModal, 60000);
+        setTimeout(showModal, 30000);
     });
 </script>
