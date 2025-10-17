@@ -41,29 +41,4 @@ const last_posts = posts.slice(0, 3);
     badge="BTTS"
   />
 </section>
-
- <section>
-  <div>
-    <h2 class="text-2xl w-full font-bold mb-5 mt-10">Makala za Michezo</h2>
-  </div>
-
-  {
-    last_posts.map((post) => (
-      <>
-        <HorizontalCard
-          title={post.data.title}
-          img={post.data.heroImage}
-          desc={post.data.description}
-          url={"/blog/" + createSlug(post.data.title, post.slug)}
-          target="_self"
-          badge={post.data.badge}
-        />
-        <div class="divider my-0" />
-      </>
-    ))
-  }
-  <div style="text-align: center; margin-top: 16px;">
-    <a href="/blog/" class="btn w-[90%] max-w-[480px] text-[14px] bg-secondary text-base-200 hover:bg-secondary">MAKALA ZAIDI</a>
-  </div>
- </section>
  <div class="divider my-3" />
